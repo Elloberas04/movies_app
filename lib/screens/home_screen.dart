@@ -10,6 +10,8 @@ class HomeScreen extends StatelessWidget {
 
     // print(moviesProvider.onDisplayMovie);
     // print(moviesProvider.popularMovies);
+    // print(moviesProvider.topRatedMovies);
+    // print(moviesProvider.upcomingMovies);
 
     return Scaffold(
       appBar: AppBar(
@@ -35,10 +37,13 @@ class HomeScreen extends StatelessWidget {
               CardSwiper(movies: moviesProvider.onDisplayMovie),
 
               // Slider de pel·licules
-              MovieSlider(movies: moviesProvider.popularMovies),
+              MovieSlider(
+                  nom: 'Populars', movies: moviesProvider.popularMovies),
               // Poodeu fer la prova d'afegir-ne uns quants, veureu com cada llista és independent
-              // MovieSlider(),
-              // MovieSlider(),
+              MovieSlider(
+                  nom: 'Top Rated', movies: moviesProvider.topRatedMovies),
+              MovieSlider(
+                  nom: 'Upcoming', movies: moviesProvider.upcomingMovies),
             ],
           ),
         ),

@@ -1,26 +1,23 @@
 import 'package:movies_app/models/models.dart';
 
-class NowPlayingResponse {
-  Dates dates;
+class TopRatedResponse {
   int page;
   List<Movie> results;
   int totalPages;
   int totalResults;
 
-  NowPlayingResponse({
-    required this.dates,
+  TopRatedResponse({
     required this.page,
     required this.results,
     required this.totalPages,
     required this.totalResults,
   });
 
-  factory NowPlayingResponse.fromRawJson(String str) =>
-      NowPlayingResponse.fromJson(json.decode(str));
+  factory TopRatedResponse.fromRawJson(String str) =>
+      TopRatedResponse.fromJson(json.decode(str));
 
-  factory NowPlayingResponse.fromJson(Map<String, dynamic> json) =>
-      NowPlayingResponse(
-        dates: Dates.fromJson(json["dates"]),
+  factory TopRatedResponse.fromJson(Map<String, dynamic> json) =>
+      TopRatedResponse(
         page: json["page"],
         results:
             List<Movie>.from(json["results"].map((x) => Movie.fromJson(x))),

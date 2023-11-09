@@ -1,13 +1,13 @@
 import 'package:movies_app/models/models.dart';
 
-class NowPlayingResponse {
+class UpcomingResponse {
   Dates dates;
   int page;
   List<Movie> results;
   int totalPages;
   int totalResults;
 
-  NowPlayingResponse({
+  UpcomingResponse({
     required this.dates,
     required this.page,
     required this.results,
@@ -15,11 +15,11 @@ class NowPlayingResponse {
     required this.totalResults,
   });
 
-  factory NowPlayingResponse.fromRawJson(String str) =>
-      NowPlayingResponse.fromJson(json.decode(str));
+  factory UpcomingResponse.fromRawJson(String str) =>
+      UpcomingResponse.fromJson(json.decode(str));
 
-  factory NowPlayingResponse.fromJson(Map<String, dynamic> json) =>
-      NowPlayingResponse(
+  factory UpcomingResponse.fromJson(Map<String, dynamic> json) =>
+      UpcomingResponse(
         dates: Dates.fromJson(json["dates"]),
         page: json["page"],
         results:

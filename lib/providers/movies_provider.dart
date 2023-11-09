@@ -10,6 +10,8 @@ class MoviesProvider extends ChangeNotifier {
 
   List<Movie> onDisplayMovie = [];
   List<Movie> popularMovies = [];
+  List<Movie> topRatedMovies = [];
+  List<Movie> upcomingMovies = [];
 
   Map<int, List<Cast>> casting = {};
 
@@ -17,6 +19,8 @@ class MoviesProvider extends ChangeNotifier {
     print("Movies Provider inicialitzat!");
     this.getOnDisplayMovies();
     this.getOnPopularsMovies();
+    this.getOnTopRatedMovies();
+    this.getOnUpcomingMovies();
   }
 
   getOnDisplayMovies() async {
@@ -59,6 +63,50 @@ class MoviesProvider extends ChangeNotifier {
     final popularResponse = PopularResponse.fromRawJson(result.body);
 
     popularMovies = popularResponse.results;
+
+    notifyListeners();
+  }
+
+  getOnTopRatedMovies() async {
+    print('getOnTopRatedMovies');
+    var url = Uri.https(
+      _baseURL,
+      '3/movie/top_rated',
+      {
+        'api_key': _apiKey,
+        'language': _language,
+        'page': _page,
+      },
+    );
+
+    // Await the http get response, then decode the json-formatted response.
+    final result = await http.get(url);
+
+    final topRatedResponse = TopRatedResponse.fromRawJson(result.body);
+
+    topRatedMovies = topRatedResponse.results;
+
+    notifyListeners();
+  }
+
+  getOnUpcomingMovies() async {
+    print('getOnUpcomingMovies');
+    var url = Uri.https(
+      _baseURL,
+      '3/movie/upcoming',
+      {
+        'api_key': _apiKey,
+        'language': _language,
+        'page': _page,
+      },
+    );
+
+    // Await the http get response, then decode the json-formatted response.
+    final result = await http.get(url);
+
+    final upcomingResponse = UpcomingResponse.fromRawJson(result.body);
+
+    upcomingMovies = upcomingResponse.results;
 
     notifyListeners();
   }
