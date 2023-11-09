@@ -16,7 +16,15 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Cartellera'),
         elevation: 0,
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.search_outlined))
+          IconButton(
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: CustomSearch(movies: moviesProvider.onDisplayMovie),
+              );
+            },
+            icon: const Icon(Icons.search_outlined),
+          )
         ],
       ),
       body: SingleChildScrollView(
