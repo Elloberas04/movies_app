@@ -18,8 +18,6 @@ class NowPlayingResponse {
   factory NowPlayingResponse.fromRawJson(String str) =>
       NowPlayingResponse.fromJson(json.decode(str));
 
-  // String toRawJson() => json.encode(toJson());
-
   factory NowPlayingResponse.fromJson(Map<String, dynamic> json) =>
       NowPlayingResponse(
         dates: Dates.fromJson(json["dates"]),
@@ -29,14 +27,6 @@ class NowPlayingResponse {
         totalPages: json["total_pages"],
         totalResults: json["total_results"],
       );
-
-  // Map<String, dynamic> toJson() => {
-  //       "dates": dates.toJson(),
-  //       "page": page,
-  //       "results": List<dynamic>.from(results.map((x) => x.toJson())),
-  //       "total_pages": totalPages,
-  //       "total_results": totalResults,
-  //     };
 }
 
 class Dates {

@@ -25,7 +25,6 @@ class CardSwiper extends StatelessWidget {
         width: double.infinity,
         // Aquest multiplicador estableix el tant per cent de pantalla ocupada 50%
         height: size.height * 0.5,
-        // color: Colors.red,
         child: Swiper(
           itemCount: movies.length,
           layout: SwiperLayout.STACK,
@@ -33,7 +32,6 @@ class CardSwiper extends StatelessWidget {
           itemHeight: size.height * 0.4,
           itemBuilder: (BuildContext context, int index) {
             final movie = movies[index];
-            // print(movie.posterPath);
             return GestureDetector(
               onTap: () =>
                   Navigator.pushNamed(context, 'details', arguments: movie),

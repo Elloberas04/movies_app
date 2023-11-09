@@ -16,8 +16,6 @@ class PopularResponse {
   factory PopularResponse.fromRawJson(String str) =>
       PopularResponse.fromJson(json.decode(str));
 
-  // String toRawJson() => json.encode(toJson());
-
   factory PopularResponse.fromJson(Map<String, dynamic> json) =>
       PopularResponse(
         page: json["page"],
@@ -26,11 +24,4 @@ class PopularResponse {
         totalPages: json["total_pages"],
         totalResults: json["total_results"],
       );
-
-  // Map<String, dynamic> toJson() => {
-  //     "page": page,
-  //     "results": List<dynamic>.from(results.map((x) => x.toJson())),
-  //     "total_pages": totalPages,
-  //     "total_results": totalResults,
-  // };
 }

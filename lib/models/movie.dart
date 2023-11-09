@@ -42,8 +42,6 @@ class Movie {
 
   factory Movie.fromRawJson(String str) => Movie.fromJson(json.decode(str));
 
-  // String toRawJson() => json.encode(toJson());
-
   factory Movie.fromJson(Map<String, dynamic> json) => Movie(
         adult: json["adult"],
         backdropPath: json["backdrop_path"],
@@ -60,45 +58,4 @@ class Movie {
         voteAverage: json["vote_average"]?.toDouble(),
         voteCount: json["vote_count"],
       );
-
-  // Map<String, dynamic> toJson() => {
-  //     "adult": adult,
-  //     "backdrop_path": backdropPath,
-  //     "genre_ids": List<dynamic>.from(genreIds.map((x) => x)),
-  //     "id": id,
-  //     "original_language": originalLanguageValues.reverse[originalLanguage],
-  //     "original_title": originalTitle,
-  //     "overview": overview,
-  //     "popularity": popularity,
-  //     "poster_path": posterPath,
-  //     "release_date": "${releaseDate.year.toString().padLeft(4, '0')}-${releaseDate.month.toString().padLeft(2, '0')}-${releaseDate.day.toString().padLeft(2, '0')}",
-  //     "title": title,
-  //     "video": video,
-  //     "vote_average": voteAverage,
-  //     "vote_count": voteCount,
-  // };
 }
-
-// enum OriginalLanguage {
-//     EN,
-//     ES,
-//     UK
-// }
-
-// final originalLanguageValues = EnumValues({
-//     "en": OriginalLanguage.EN,
-//     "es": OriginalLanguage.ES,
-//     "uk": OriginalLanguage.UK
-// });
-
-// class EnumValues<T> {
-//     Map<String, T> map;
-//     late Map<T, String> reverseMap;
-
-//     EnumValues(this.map);
-
-//     Map<T, String> get reverse {
-//         reverseMap = map.map((k, v) => MapEntry(v, k));
-//         return reverseMap;
-//     }
-// }
