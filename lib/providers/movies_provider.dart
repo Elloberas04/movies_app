@@ -12,7 +12,6 @@ class MoviesProvider extends ChangeNotifier {
   List<Movie> popularMovies = [];
   List<Movie> topRatedMovies = [];
   List<Movie> upcomingMovies = [];
-  List<Movie> moviesBySearch = [];
 
   Map<int, List<Cast>> casting = {};
 
