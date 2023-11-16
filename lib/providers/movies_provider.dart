@@ -12,6 +12,7 @@ class MoviesProvider extends ChangeNotifier {
   List<Movie> popularMovies = [];
   List<Movie> topRatedMovies = [];
   List<Movie> upcomingMovies = [];
+  List<Movie> moviesBySearch = [];
 
   Map<int, List<Cast>> casting = {};
 
@@ -130,5 +131,28 @@ class MoviesProvider extends ChangeNotifier {
     casting[idMovie] = creditsResponse.cast;
 
     return creditsResponse.cast;
+  }
+
+  Future<List<Movie>> getMoviesBySearch(String adult, String query) async {
+    print('Cercant pelis al servidor...');
+    var url = Uri.https(
+      _baseURL,
+      '3/search/movie',
+      {
+        'api_key': _apiKey,
+        'language': _language,
+        'page': _page,
+        'query': query,
+        'include_adult': adult
+      },
+    );
+
+    // Await the http get response, then decode the json-formatted response.
+    final result = await http.get(url);
+
+    final moviesBySearchResponse =
+        MoviesBySearchResponse.fromRawJson(result.body);
+
+    return moviesBySearchResponse.results;
   }
 }

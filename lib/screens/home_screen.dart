@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
             onPressed: () {
               showSearch(
                 context: context,
-                delegate: CustomSearch(movies: moviesProvider.onDisplayMovie),
+                delegate: CustomSearch(context, moviesProvider.onDisplayMovie),
               );
             },
             icon: const Icon(Icons.search_outlined),
@@ -40,8 +40,10 @@ class HomeScreen extends StatelessWidget {
               MovieSlider(
                   nom: 'Populars', movies: moviesProvider.popularMovies),
               // Poodeu fer la prova d'afegir-ne uns quants, veureu com cada llista és independent
+              const SizedBox(height: 20),
               MovieSlider(
                   nom: 'Top Rated', movies: moviesProvider.topRatedMovies),
+              const SizedBox(height: 20),
               MovieSlider(
                   nom: 'Upcoming', movies: moviesProvider.upcomingMovies),
             ],
